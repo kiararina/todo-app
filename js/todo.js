@@ -40,21 +40,23 @@ window.onload = function() {
 	      var li = document.createElement('li');
 	      li.id = 'todo-' + todo.timestamp;
 
-	      var checkbox = document.createElement('input');
-
+	      // Display the title/text
 	      var spanText = document.createElement('span');
 	      spanText.innerHTML = todo.text;
 	      spanText.className = "todo-text";
 	      li.appendChild(spanText);
 	      todoList.appendChild(li);
 
+	      // Add wrapper for option buttons
 	      var divWrapper = document.createElement('div');
 	      divWrapper.className = "todo-wrapper";
 	      li.appendChild(divWrapper);
 
 	      if(todo.status == "Active") {
+	      	  // Add a class if the to-do item is active
 	      	  li.className = "todo-active";
 
+	      	  // Add button to update status to "Completed"
 	      	  var buttonDone = document.createElement('input');
 	      	  buttonDone.type = "button";
 		      buttonDone.className = "todo-button";
@@ -63,15 +65,18 @@ window.onload = function() {
 	    	  buttonDone.setAttribute("value", 'Mark as Done');
 		      divWrapper.appendChild(buttonDone);
 
+		      // Add status button listener
 		      buttonDone.addEventListener('click', function(e) {
 		        var id = parseInt(e.target.getAttribute('data-id'));
 		        console.log(id);
 
 		        todoDB.doneTodo(id, refreshTodos);
+		        // Hide the "Mark as Done" button after update
 		        buttonDone.setAttribute("hidden", true);
 		      });
 	      }
 
+	      // Add Delete button
 	      var buttonDelete = document.createElement('input');
 	      buttonDelete.type = "button";
 	      buttonDelete.className = "todo-button";
@@ -79,7 +84,8 @@ window.onload = function() {
 	      buttonDelete.setAttribute("data-id", todo.timestamp);                    
     	  buttonDelete.setAttribute("value", 'Delete');
 	      divWrapper.appendChild(buttonDelete);
-	      
+
+	      // Add Delete button listener
 	      buttonDelete.addEventListener('click', function(e) {
 	        var id = parseInt(e.target.getAttribute('data-id'));
 	        console.log(id);
@@ -87,6 +93,7 @@ window.onload = function() {
 	        todoDB.deleteTodo(id, refreshTodos);
 	      });
 
+	      // Add Update button
 	      var buttonUpdate = document.createElement('input');
 	      buttonUpdate.type = "button";
 	      buttonUpdate.className = "todo-button";
@@ -95,6 +102,7 @@ window.onload = function() {
     	  buttonUpdate.setAttribute("value", 'Update');
 	      divWrapper.appendChild(buttonUpdate);
 	      
+	      // Add Delete button listener
 	      buttonUpdate.addEventListener('click', function(e) {
 	        var id = parseInt(e.target.getAttribute('data-id'));
 	        var newText = prompt("New Task Name:", todo.text);

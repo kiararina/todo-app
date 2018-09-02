@@ -161,7 +161,7 @@ tDB.doneTodo = function(id, callback) {
 };
 
 /**
- * Update todo to "Completed" status.
+ * Update todo title/text.
  */
 tDB.updateTodo = function(id,text,callback) {
   var db = datastore;
