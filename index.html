@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>To-Do Application</title>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div id="content-wrap">
+			<header><h3>To-Do Application</h3></header>
+			<section id="todo-new" class="todoapp"></section>
+				<!-- Form for adding new items to the list -->
+				<form id="todo-add-item" method="POST" action="#">
+			      <input type="text" name="todo-add" id="todo-add" placeholder="Type a new task.." required>
+			    </form>
+			</section>
+			<section id="todo-contents" class="todoapp">
+				<form id="todo-change-form">
+					<ul id="todo-items"></ul>
+				</form>
+			</section>
+			<section class="info">
+				<hr>
+				<p>To add a new to-do item, type inside the text box and press "Enter" key.</p>
+				<p>To edit, click "Update", enter a new name and click "Okay".</p>
+				<p>To mark an item as "Completed", click "Mark as done" button.</p>
+				<p>To delete an item, click "Delete" button.</p>
+			</section>
+		</div>
+		<script src="js/db.js"></script>
+  		<script src="js/todo.js"></script>
+	</body>
+</html>
